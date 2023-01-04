@@ -5,31 +5,29 @@ namespace EmailAuth.ViewModels
 {
     internal class RegisterViewModel : INotifyPropertyChanged
     {
-        public string webApiKey = "AIzaSyCr4cimN4UVgJ90g1WD99XguCBCMMqS0uk";
+        public string webApiKey = "AIzaSyBZ6cvFQ_qtGoLwsaEInE3ueL1e4ZDEfaA";
 
         private INavigation _navigation;
+        private string name;
         private string email;
         private string password;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Email
+        public string Name
         {
-            get => email;
-            set
-            {
-                email = value;
-                RaisePropertyChanged("Email");
-            }
+            get => name;
+            set { name = value; RaisePropertyChanged("Name"); }
         }
 
-        public string Password
-        {
-            get => password; set
-            {
-                password = value;
-                RaisePropertyChanged("Password");
-            }
+        public string Email {
+            get => email;
+            set { email = value; RaisePropertyChanged("Email"); }
+        }
+
+        public string Password {
+            get => password;
+            set { password = value; RaisePropertyChanged("Password"); }
         }
 
         public Command RegisterUser { get; }

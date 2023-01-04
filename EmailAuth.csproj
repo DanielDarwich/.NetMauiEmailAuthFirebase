@@ -51,7 +51,11 @@
 
 	<ItemGroup>
 	  <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	  <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+	  <PackageReference Include="Plugin.GoogleClient" Version="2.1.16-beta" />
+	  <PackageReference Include="NextCorp.GoogleClient" Version="1.0.0.2" />
+	  <PackageReference Include="Nemiro.OAuth.LoginForms" Version="1.7.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -63,9 +67,40 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="AppleSignIn\" />
+	  <None Remove="AppleSignIn\Dependency\" />
+	  <None Remove="AppleSignIn\Model\" />
+	  <None Remove="System.Threading.Tasks" />
+	  <None Remove="Plugin.GoogleClient" />
+	  <None Remove="NextCorp.GoogleClient" />
+	  <None Remove="Nemiro.OAuth.LoginForms" />
+	  <None Remove="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="AppleSignIn\" />
+	  <Folder Include="AppleSignIn\Dependency\" />
+	  <Folder Include="AppleSignIn\Model\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+	</ItemGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
 		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
 	</PropertyGroup>
 	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	  <CodesignProvision>Automatic</CodesignProvision>
+	  <CodesignKey>Apple Development: Created via API (G8PQXCR26R)</CodesignKey>
+	  <MtouchLink>None</MtouchLink>
+	  <MtouchDebug>true</MtouchDebug>
+	  <CodesignEntitlements></CodesignEntitlements>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	  <CodesignKey>iPhone Developer</CodesignKey>
+	</PropertyGroup>
 </Project>

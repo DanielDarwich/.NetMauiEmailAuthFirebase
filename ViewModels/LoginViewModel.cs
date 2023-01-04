@@ -6,12 +6,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmailAuth.Dependency;
 
 namespace EmailAuth.ViewModels
 {
     internal class LoginViewModel : INotifyPropertyChanged
     {
-        public string webApiKey = "AIzaSyCr4cimN4UVgJ90g1WD99XguCBCMMqS0uk";
+        public string webApiKey = "AIzaSyBZ6cvFQ_qtGoLwsaEInE3ueL1e4ZDEfaA";
         private INavigation _navigation;
         private string userName;
         private string userPassword;
@@ -44,6 +45,7 @@ namespace EmailAuth.ViewModels
             this._navigation = navigation;
             RegisterBtn = new Command(RegisterBtnTappedAsync);
             LoginBtn = new Command(LoginBtnTappedAsync);
+
         }
 
         private async void LoginBtnTappedAsync(object obj)
@@ -60,7 +62,6 @@ namespace EmailAuth.ViewModels
             catch (Exception ex)
             {
                 await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
-                throw;
             }
 
             
@@ -70,6 +71,9 @@ namespace EmailAuth.ViewModels
         {
             await this._navigation.PushAsync(new RegisterPage());
         }
+
+        
+        
 
         private void RaisePropertyChanged(string v)
         {
